@@ -229,14 +229,11 @@ h1 {
   .game-info {
     flex-direction: column;
   }
-
-  /* === CAMBIO CLAVE PARA RESPONSIVIDAD DEL TABLERO === */
-  .game-board {
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas en tablets */
-  }
+  /* La cuadrícula se mantiene en 6 columnas para tablets */
 }
 
 @media (max-width: 480px) {
+  /* === CAMBIO CLAVE PARA MÓVILES === */
   .game-board {
     grid-template-columns: repeat(4, 1fr); /* 4 columnas en móviles */
   }

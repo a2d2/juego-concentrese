@@ -61,44 +61,69 @@ const VERBS = [
   { en: 'Find', es: 'Encontrar' },
 ]
 const HARD_WORDS = [
-  { en: 'Consequence', es: 'Consecuencia' },
-  { en: 'Enthusiasm', es: 'Entusiasmo' },
-  { en: 'Ambition', es: 'Ambición' },
-  { en: 'Efficiency', es: 'Eficiencia' },
-  { en: 'Recommendation', es: 'Recomendación' },
-  { en: 'Philosophy', es: 'Filosofía' },
-  { en: 'Environment', es: 'Medio ambiente' },
-  { en: 'Government', es: 'Gobierno' },
   { en: 'Knowledge', es: 'Conocimiento' },
-  { en: 'Responsibility', es: 'Responsabilidad' },
-  { en: 'Communication', es: 'Comunicación' },
-  { en: 'Opportunity', es: 'Oportunidad' },
-  { en: 'Imagination', es: 'Imaginación' },
   { en: 'Development', es: 'Desarrollo' },
-  { en: 'Relationship', es: 'Relación' },
-  { en: 'Satisfaction', es: 'Satisfacción' },
   { en: 'Performance', es: 'Rendimiento' },
   { en: 'Understanding', es: 'Comprensión' },
-  { en: 'Technology', es: 'Tecnología' },
-  { en: 'Psychology', es: 'Psicología' },
-  { en: 'Literature', es: 'Literatura' },
-  { en: 'Infrastructure', es: 'Infraestructura' },
   { en: 'Entrepreneur', es: 'Emprendedor' },
-  { en: 'Simultaneously', es: 'Simultáneamente' },
-  { en: 'Unprecedented', es: 'Sin precedentes' },
-  { en: 'Collaboration', es: 'Colaboración' },
-  { en: 'Sustainability', es: 'Sostenibilidad' },
-  { en: 'Globalization', es: 'Globalización' },
-  { en: 'Phenomenon', es: 'Fenómeno' },
-  { en: 'Negotiation', es: 'Negociación' },
-  { en: 'Organization', es: 'Organización' },
-  { en: 'Transformation', es: 'Transformación' },
-  { en: 'Vulnerable', es: 'Vulnerable' },
-  { en: 'Consciousness', es: 'Conciencia' },
-  { en: 'Democracy', es: 'Democracia' },
-  { en: 'Controversial', es: 'Controvertido' },
-  { en: 'Architecture', es: 'Arquitectura' },
   { en: 'Accomplishment', es: 'Logro' },
+  { en: 'Accrue', es: 'acumulacion' },
+  { en: 'Acumen', es: 'agudeza' },
+  { en: 'Akin', es: 'similar' },
+  { en: 'Blackout', es: 'corte de luz' },
+  { en: 'Bluff', es: 'engaño' },
+  { en: 'Boldness', es: 'audacia' },
+  { en: 'Boost', es: 'impulso' },
+  { en: 'Busted', es: 'descompuesto' },
+  { en: 'Clumsy', es: 'torpe' },
+  { en: 'Commute', es: 'desplazarse' },
+  { en: 'Convey', es: 'expresar' },
+  { en: 'Cope', es: 'afrontar' },
+  { en: 'Crook', es: 'estafador' },
+  { en: 'Crumbled', es: 'desmenuzado' },
+  { en: 'Damp', es: 'humedad' },
+  { en: 'Disclose', es: 'revelar' },
+  { en: 'Dispair', es: 'deseperacion' },
+  { en: 'Ditch', es: 'zanja' },
+  { en: 'Endowment', es: 'dotacion' },
+  { en: 'Flair', es: 'estilo' },
+  { en: 'Flood', es: 'inundacion' },
+  { en: 'Garment', es: 'prenda' },
+  { en: 'Grouch', es: 'gruñon' },
+  { en: 'Hinder', es: 'impedir' },
+  { en: 'Hone', es: 'afilar' },
+  { en: 'Hitch', es: 'tropiezo' },
+  { en: 'Indictment', es: 'imputacion' },
+  { en: 'Janitor', es: 'conserje' },
+  { en: 'Linger', es: 'permanecer' },
+  { en: 'Lodge', es: 'alojamiento' },
+  { en: 'Mumble', es: 'murmullo' },
+  { en: 'Opt in', es: 'optar por' },
+  { en: 'Outreach', es: 'alcance' },
+  { en: 'Oversee', es: 'supervisar' },
+  { en: 'Oversight', es: 'supervision' },
+  { en: 'Playground', es: 'parque infantil' },
+  { en: 'Plea', es: 'suplica' },
+  { en: 'Recap', es: 'resumen' },
+  { en: 'Reckless', es: 'imprudente' },
+  { en: 'Restless', es: 'inquieto' },
+  { en: 'Revamp', es: 'renovar' },
+  { en: 'Riddle', es: 'acertijo' },
+  { en: 'Rip', es: 'rasgon' },
+  { en: 'Scrub', es: 'restregar' },
+  { en: 'Shabby', es: 'desaliñado' },
+  { en: 'Spook', es: 'fantasma' },
+  { en: 'Stagger', es: 'tambaleo' },
+  { en: 'Stale', es: 'rancio' },
+  { en: 'Stumble', es: 'tropiezo' },
+  { en: 'Surge', es: 'subida' },
+  { en: 'Tenant', es: 'inquilino' },
+  { en: 'Trolley', es: 'carro de compras' },
+  { en: 'Uphold', es: 'mantener' },
+  { en: 'Wary', es: 'cauteloso' },
+  { en: 'Wimp', es: 'debil' },
+  { en: 'Wreck', es: 'destrozo' },
+  { en: 'Yammer', es: 'queja' },
 ]
 
 // --- 1. SELECCIÓN DE ELEMENTOS DEL DOM ---
@@ -112,7 +137,8 @@ const categorySelector = document.getElementById('category-selector')
 const finalScoreElement = document.getElementById('final-score')
 
 // --- 2. VARIABLES Y CONSTANTES DEL JUEGO ---
-const PAIRS_TO_PLAY = 15
+// === CAMBIO CLAVE AQUÍ ===
+const PAIRS_TO_PLAY = 12 // 24 cartas en total (funciona para 6 y 4 columnas)
 
 let hasFlippedCard = false,
   lockBoard = true
@@ -122,49 +148,18 @@ let timer,
   matchedPairs = 0
 let cards = []
 
-// --- 3. FUNCIONES PRINCIPALES DEL JUEGO ---
+// --- 3. FUNCIONES PRINCIPALES DEL JUEGO (sin cambios) ---
 function speak(word) {
-  window.speechSynthesis.cancel()
-  if ('speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(word)
-    utterance.lang = 'en-US'
-    utterance.rate = 0.9
-    utterance.pitch = 1.1
-    window.speechSynthesis.speak(utterance)
-  }
+  /* ...código sin cambios... */
 }
-
 function createBoard(wordsForThisGame) {
-  board.innerHTML = ''
-  const gameWords = [...wordsForThisGame, ...wordsForThisGame].sort(
-    () => 0.5 - Math.random()
-  )
-  gameWords.forEach((wordData) => {
-    const cardElement = document.createElement('div')
-    cardElement.classList.add('card')
-    cardElement.dataset.word = wordData.en
-    cardElement.innerHTML = `<div class="card-face card-front"></div><div class="card-face card-back"><span class="word-en">${wordData.en}</span><span class="word-es">${wordData.es}</span></div>`
-    board.appendChild(cardElement)
-  })
+  /* ...código sin cambios... */
 }
-
 function flipCard() {
-  if (lockBoard || this === firstCard) return
-  this.classList.add('is-flipped')
-  speak(this.dataset.word)
-  if (!hasFlippedCard) {
-    hasFlippedCard = true
-    firstCard = this
-  } else {
-    secondCard = this
-    checkForMatch()
-  }
+  /* ...código sin cambios... */
 }
-
 function checkForMatch() {
-  lockBoard = true
-  let isMatch = firstCard.dataset.word === secondCard.dataset.word
-  isMatch ? handleMatch() : handleNoMatch()
+  /* ...código sin cambios... */
 }
 
 function handleMatch() {
@@ -178,22 +173,81 @@ function handleMatch() {
 }
 
 function handleNoMatch() {
+  /* ...código sin cambios... */
+}
+function resetBoard() {
+  /* ...código sin cambios... */
+}
+
+// --- 4. FUNCIONES DE CONTROL DEL JUEGO (sin cambios) ---
+function startGame() {
+  /* ...código sin cambios... */
+}
+function updateTimer() {
+  /* ...código sin cambios... */
+}
+function endGame(allPairsFound) {
+  /* ...código sin cambios... */
+}
+
+// --- 5. ASIGNACIÓN DE EVENTOS (sin cambios) ---
+startButton.addEventListener('click', startGame)
+playAgainButton.addEventListener('click', startGame)
+
+// === NO ES NECESARIO TOCAR ESTAS FUNCIONES, PERO SE INCLUYEN PARA QUE ESTÉ COMPLETO ===
+function speak(word) {
+  window.speechSynthesis.cancel()
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(word)
+    utterance.lang = 'en-US'
+    utterance.rate = 0.9
+    utterance.pitch = 1.1
+    window.speechSynthesis.speak(utterance)
+  }
+}
+function createBoard(wordsForThisGame) {
+  board.innerHTML = ''
+  const gameWords = [...wordsForThisGame, ...wordsForThisGame].sort(
+    () => 0.5 - Math.random()
+  )
+  gameWords.forEach((wordData) => {
+    const cardElement = document.createElement('div')
+    cardElement.classList.add('card')
+    cardElement.dataset.word = wordData.en
+    cardElement.innerHTML = `<div class="card-face card-front"></div><div class="card-face card-back"><span class="word-en">${wordData.en}</span><span class="word-es">${wordData.es}</span></div>`
+    board.appendChild(cardElement)
+  })
+}
+function flipCard() {
+  if (lockBoard || this === firstCard) return
+  this.classList.add('is-flipped')
+  speak(this.dataset.word)
+  if (!hasFlippedCard) {
+    hasFlippedCard = true
+    firstCard = this
+  } else {
+    secondCard = this
+    checkForMatch()
+  }
+}
+function checkForMatch() {
+  lockBoard = true
+  let isMatch = firstCard.dataset.word === secondCard.dataset.word
+  isMatch ? handleMatch() : handleNoMatch()
+}
+function handleNoMatch() {
   setTimeout(() => {
     if (firstCard) firstCard.classList.remove('is-flipped')
     if (secondCard) secondCard.classList.remove('is-flipped')
     resetBoard()
   }, 1500)
 }
-
 function resetBoard() {
   ;[hasFlippedCard, lockBoard] = [false, false]
   ;[firstCard, secondCard] = [null, null]
 }
-
-// --- 4. FUNCIONES DE CONTROL DEL JUEGO ---
 function startGame() {
   window.speechSynthesis.cancel()
-
   const selectedCategory = categorySelector.value
   let sourceVocabulary
   switch (selectedCategory) {
@@ -207,30 +261,25 @@ function startGame() {
       sourceVocabulary = EASY_WORDS
       break
   }
-
   if (PAIRS_TO_PLAY > sourceVocabulary.length) {
-    alert(`¡Error! No hay suficientes palabras en la categoría seleccionada.`)
+    alert(
+      `¡Error! No hay suficientes palabras en la categoría seleccionada. Se necesitan ${PAIRS_TO_PLAY} y solo hay ${sourceVocabulary.length}.`
+    )
     return
   }
-
   const shuffledVocabulary = sourceVocabulary.sort(() => 0.5 - Math.random())
   const wordsForThisGame = shuffledVocabulary.slice(0, PAIRS_TO_PLAY)
-
   lockBoard = false
   matchedPairs = 0
   timeLeft = 300
-
   endGameMessage.classList.add('hidden')
-
   createBoard(wordsForThisGame)
   cards = document.querySelectorAll('.card')
   cards.forEach((card) => card.addEventListener('click', flipCard))
-
   clearInterval(timer)
   timer = setInterval(updateTimer, 1000)
   updateTimer()
 }
-
 function updateTimer() {
   if (timeLeft <= 0) {
     endGame(false)
@@ -243,11 +292,9 @@ function updateTimer() {
   const seconds = (timeLeft % 60).toString().padStart(2, '0')
   timerElement.textContent = `${minutes}:${seconds}`
 }
-
 function endGame(allPairsFound) {
   clearInterval(timer)
   lockBoard = true
-
   if (allPairsFound) {
     finalMessageText.textContent =
       '¡Felicidades, encontraste todos los pares! 🎉'
@@ -257,7 +304,3 @@ function endGame(allPairsFound) {
   finalScoreElement.textContent = matchedPairs
   endGameMessage.classList.remove('hidden')
 }
-
-// --- 5. ASIGNACIÓN DE EVENTOS ---
-startButton.addEventListener('click', startGame)
-playAgainButton.addEventListener('click', startGame)

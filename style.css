@@ -118,11 +118,13 @@ h1 {
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  /* === CAMBIO #1: DE CÍRCULO A CUADRADO REDONDEADO === */
+  border-radius: 15px; /* Antes era 50% */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,6 +132,7 @@ h1 {
   box-shadow: 0 5px 15px var(--shadow-color);
   overflow: hidden;
 }
+
 .card-front {
   background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
   border: 3px solid var(--white);
@@ -143,8 +146,10 @@ h1 {
   transition: opacity 0.4s ease-in-out 0.2s;
   flex-direction: column;
   line-height: 1.2;
-  padding: 5px;
+  /* === CAMBIO #2: MÁS ESPACIO INTERNO PARA EL TEXTO === */
+  padding: 10px; /* Antes era 5px */
 }
+
 .card.is-flipped {
   transform: rotateY(180deg);
 }
@@ -239,12 +244,11 @@ h1 {
   }
 }
 
-/* === CAMBIO REALIZADO AQUÍ === */
 @media (max-width: 480px) {
   .word-en {
-    font-size: 0.8em; /* Más pequeño para móviles */
+    font-size: 0.8em;
   }
   .word-es {
-    font-size: 0.6em; /* También más pequeño */
+    font-size: 0.6em;
   }
 }

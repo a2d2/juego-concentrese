@@ -71,7 +71,6 @@ h1 {
   margin: 0 5px;
 }
 
-/* === NUEVOS ESTILOS PARA LOS CONTROLES === */
 .control-container {
   display: flex;
   align-items: center;
@@ -237,5 +236,15 @@ h1 {
   }
   .word-es {
     font-size: 0.7em;
+  }
+}
+
+/* === CAMBIO REALIZADO AQUÍ === */
+@media (max-width: 480px) {
+  .word-en {
+    font-size: 0.8em; /* Más pequeño para móviles */
+  }
+  .word-es {
+    font-size: 0.6em; /* También más pequeño */
   }
 }

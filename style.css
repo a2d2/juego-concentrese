@@ -37,7 +37,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px var(--shadow-color);
   width: 95%;
-  max-width: 800px; /* Reducido un poco para 6 columnas */
+  max-width: 800px;
   backdrop-filter: blur(5px);
 }
 
@@ -58,7 +58,7 @@ h1 {
   background: var(--light-blue);
   border-radius: 10px;
   flex-wrap: wrap;
-  gap: 20px; /* Aumentado el espacio */
+  gap: 20px;
 }
 
 .timer-container,
@@ -66,13 +66,11 @@ h1 {
   font-size: 1.1em;
   font-weight: bold;
 }
-
 .control-container {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .control-select {
   padding: 8px;
   border-radius: 6px;
@@ -83,7 +81,6 @@ h1 {
   color: var(--dark-blue);
   cursor: pointer;
 }
-
 #start-button {
   padding: 10px 20px;
   font-size: 1em;
@@ -108,7 +105,7 @@ h1 {
   grid-template-columns: repeat(6, 1fr);
 }
 .card {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1; /* Mantenemos cuadrado para escritorio */
   position: relative;
   cursor: pointer;
   transform-style: preserve-3d;
@@ -125,7 +122,7 @@ h1 {
   backface-visibility: hidden;
   box-shadow: 0 5px 15px var(--shadow-color);
   overflow: hidden;
-  text-align: center; /* Ayuda a centrar palabras largas */
+  text-align: center;
 }
 .card-front {
   background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
@@ -229,17 +226,25 @@ h1 {
   .game-info {
     flex-direction: column;
   }
-  /* La cuadrícula se mantiene en 6 columnas para tablets */
+  .game-board {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-  /* === CAMBIO CLAVE PARA MÓVILES === */
   .game-board {
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas en móviles */
+    grid-template-columns: repeat(4, 1fr);
   }
+
+  /* === CAMBIOS CLAVE AQUÍ === */
+  .card {
+    aspect-ratio: 5 / 4; /* Tarjetas más altas que anchas para dar espacio vertical */
+  }
+
   .word-en {
-    font-size: 0.8em;
+    font-size: 0.65em; /* Reducción adicional para palabras muy largas */
   }
+
   .word-es {
     font-size: 0.6em;
   }

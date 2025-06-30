@@ -110,6 +110,8 @@ h1 {
   display: grid;
   gap: 12px;
   perspective: 1000px;
+  /* === REGLA FIJA PARA LA CUADRÍCULA 6x5 === */
+  grid-template-columns: repeat(6, 1fr);
 }
 .card {
   aspect-ratio: 1 / 1;
@@ -118,13 +120,11 @@ h1 {
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* === CAMBIO #1: DE CÍRCULO A CUADRADO REDONDEADO === */
-  border-radius: 15px; /* Antes era 50% */
+  border-radius: 6%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +132,6 @@ h1 {
   box-shadow: 0 5px 15px var(--shadow-color);
   overflow: hidden;
 }
-
 .card-front {
   background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
   border: 3px solid var(--white);
@@ -146,10 +145,8 @@ h1 {
   transition: opacity 0.4s ease-in-out 0.2s;
   flex-direction: column;
   line-height: 1.2;
-  /* === CAMBIO #2: MÁS ESPACIO INTERNO PARA EL TEXTO === */
-  padding: 10px; /* Antes era 5px */
+  padding: 5px;
 }
-
 .card.is-flipped {
   transform: rotateY(180deg);
 }

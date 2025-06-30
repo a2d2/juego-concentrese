@@ -1,5 +1,4 @@
 // --- BANCOS DE PALABRAS CATEGORIZADOS ---
-
 const EASY_WORDS = [
   { en: 'Apple', es: 'Manzana' },
   { en: 'House', es: 'Casa' },
@@ -175,10 +174,11 @@ const timerElement = document.getElementById('timer')
 const endGameMessage = document.getElementById('end-game-message')
 const finalMessageText = document.getElementById('final-message-text')
 const playAgainButton = document.getElementById('play-again-button')
-const sizeSelector = document.getElementById('board-size-selector')
-const categorySelector = document.getElementById('category-selector') // Nuevo selector
+const categorySelector = document.getElementById('category-selector')
 
-// --- 2. VARIABLES DE ESTADO DEL JUEGO ---
+// --- 2. VARIABLES Y CONSTANTES DEL JUEGO ---
+const PAIRS_TO_PLAY = 15 // Tablero fijo de 6x5 = 30 cartas = 15 pares
+
 let hasFlippedCard = false,
   lockBoard = true
 let firstCard, secondCard
@@ -189,51 +189,19 @@ let timer,
   timeLeft = 300,
   matchedPairs = 0
 let cards = []
-let pairsForThisGame = 0
 
 // --- 3. FUNCIONES PRINCIPALES DEL JUEGO ---
 function speak(word) {
-  window.speechSynthesis.cancel()
-  if ('speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(word)
-    utterance.lang = 'en-US'
-    utterance.rate = 0.9
-    utterance.pitch = 1.1
-    window.speechSynthesis.speak(utterance)
-  }
+  /* ...código sin cambios... */
 }
-
 function createBoard(wordsForThisGame) {
-  board.innerHTML = ''
-  const gameWords = [...wordsForThisGame, ...wordsForThisGame].sort(
-    () => 0.5 - Math.random()
-  )
-  gameWords.forEach((wordData) => {
-    const cardElement = document.createElement('div')
-    cardElement.classList.add('card')
-    cardElement.dataset.word = wordData.en
-    cardElement.innerHTML = `<div class="card-face card-front"></div><div class="card-face card-back"><span class="word-en">${wordData.en}</span><span class="word-es">${wordData.es}</span></div>`
-    board.appendChild(cardElement)
-  })
+  /* ...código sin cambios... */
 }
-
 function flipCard() {
-  if (lockBoard || this === firstCard) return
-  this.classList.add('is-flipped')
-  speak(this.dataset.word)
-  if (!hasFlippedCard) {
-    hasFlippedCard = true
-    firstCard = this
-  } else {
-    secondCard = this
-    checkForMatch()
-  }
+  /* ...código sin cambios... */
 }
-
 function checkForMatch() {
-  lockBoard = true
-  let isMatch = firstCard.dataset.word === secondCard.dataset.word
-  isMatch ? handleMatch() : handleNoMatch()
+  /* ...código sin cambios... */
 }
 
 function handleMatch() {
@@ -247,34 +215,21 @@ function handleMatch() {
   firstCard.removeEventListener('click', flipCard)
   secondCard.removeEventListener('click', flipCard)
   matchedPairs++
-  if (matchedPairs === pairsForThisGame) {
+  if (matchedPairs === PAIRS_TO_PLAY) {
+    // Usa la constante
     endGame(true)
   }
   resetBoard()
 }
 
 function handleNoMatch() {
-  setTimeout(() => {
-    if (firstCard) firstCard.classList.remove('is-flipped')
-    if (secondCard) secondCard.classList.remove('is-flipped')
-    switchPlayer()
-    resetBoard()
-  }, 1500)
+  /* ...código sin cambios... */
 }
-
 function switchPlayer() {
-  currentPlayer = currentPlayer === 1 ? 2 : 1
-  document
-    .getElementById('scoreboard')
-    .children[0].classList.toggle('active-player', currentPlayer === 1)
-  document
-    .getElementById('scoreboard')
-    .children[1].classList.toggle('active-player', currentPlayer === 2)
+  /* ...código sin cambios... */
 }
-
 function resetBoard() {
-  ;[hasFlippedCard, lockBoard] = [false, false]
-  ;[firstCard, secondCard] = [null, null]
+  /* ...código sin cambios... */
 }
 
 // --- 4. FUNCIONES DE CONTROL DEL JUEGO ---
@@ -291,29 +246,22 @@ function startGame() {
     case 'verbs':
       sourceVocabulary = VERBS
       break
-    default: // 'easy'
+    default:
       sourceVocabulary = EASY_WORDS
       break
   }
 
-  // 2. OBTENER TAMAÑO DEL TABLERO Y VALIDAR
-  const [selectedPairs, selectedColumns] = sizeSelector.value
-    .split(',')
-    .map(Number)
-  pairsForThisGame = selectedPairs
-
-  if (pairsForThisGame > sourceVocabulary.length) {
+  // 2. VALIDAR SI HAY SUFICIENTES PALABRAS EN LA CATEGORÍA ELEGIDA
+  if (PAIRS_TO_PLAY > sourceVocabulary.length) {
     alert(
-      `¡Error! No hay suficientes palabras en la categoría seleccionada para un tablero de ${selectedPairs} pares. Por favor, elija un tamaño más pequeño.`
+      `¡Error! No hay suficientes palabras en la categoría seleccionada. Se necesitan ${PAIRS_TO_PLAY} y solo hay ${sourceVocabulary.length}.`
     )
     return
   }
 
-  // 3. CONFIGURAR Y EMPEZAR EL JUEGO
-  board.style.gridTemplateColumns = `repeat(${selectedColumns}, 1fr)`
-
+  // 3. CONFIGURAR Y EMPEZAR EL JUEGO (Lógica de tamaño eliminada)
   const shuffledVocabulary = sourceVocabulary.sort(() => 0.5 - Math.random())
-  const wordsForThisGame = shuffledVocabulary.slice(0, pairsForThisGame)
+  const wordsForThisGame = shuffledVocabulary.slice(0, PAIRS_TO_PLAY)
 
   lockBoard = false
   scorePlayer1 = 0
@@ -343,6 +291,79 @@ function startGame() {
 }
 
 function updateTimer() {
+  /* ...código sin cambios... */
+}
+function endGame(allPairsFound) {
+  /* ...código sin cambios... */
+}
+
+// --- 5. ASIGNACIÓN DE EVENTOS ---
+startButton.addEventListener('click', startGame)
+playAgainButton.addEventListener('click', startGame)
+
+// Copia aquí las funciones que no cambiaron si las borraste accidentalmente
+function speak(word) {
+  window.speechSynthesis.cancel()
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(word)
+    utterance.lang = 'en-US'
+    utterance.rate = 0.9
+    utterance.pitch = 1.1
+    window.speechSynthesis.speak(utterance)
+  }
+}
+function createBoard(wordsForThisGame) {
+  board.innerHTML = ''
+  const gameWords = [...wordsForThisGame, ...wordsForThisGame].sort(
+    () => 0.5 - Math.random()
+  )
+  gameWords.forEach((wordData) => {
+    const cardElement = document.createElement('div')
+    cardElement.classList.add('card')
+    cardElement.dataset.word = wordData.en
+    cardElement.innerHTML = `<div class="card-face card-front"></div><div class="card-face card-back"><span class="word-en">${wordData.en}</span><span class="word-es">${wordData.es}</span></div>`
+    board.appendChild(cardElement)
+  })
+}
+function flipCard() {
+  if (lockBoard || this === firstCard) return
+  this.classList.add('is-flipped')
+  speak(this.dataset.word)
+  if (!hasFlippedCard) {
+    hasFlippedCard = true
+    firstCard = this
+  } else {
+    secondCard = this
+    checkForMatch()
+  }
+}
+function checkForMatch() {
+  lockBoard = true
+  let isMatch = firstCard.dataset.word === secondCard.dataset.word
+  isMatch ? handleMatch() : handleNoMatch()
+}
+function handleNoMatch() {
+  setTimeout(() => {
+    if (firstCard) firstCard.classList.remove('is-flipped')
+    if (secondCard) secondCard.classList.remove('is-flipped')
+    switchPlayer()
+    resetBoard()
+  }, 1500)
+}
+function switchPlayer() {
+  currentPlayer = currentPlayer === 1 ? 2 : 1
+  document
+    .getElementById('scoreboard')
+    .children[0].classList.toggle('active-player', currentPlayer === 1)
+  document
+    .getElementById('scoreboard')
+    .children[1].classList.toggle('active-player', currentPlayer === 2)
+}
+function resetBoard() {
+  ;[hasFlippedCard, lockBoard] = [false, false]
+  ;[firstCard, secondCard] = [null, null]
+}
+function updateTimer() {
   if (timeLeft <= 0) {
     endGame(false)
     return
@@ -354,7 +375,6 @@ function updateTimer() {
   const seconds = (timeLeft % 60).toString().padStart(2, '0')
   timerElement.textContent = `${minutes}:${seconds}`
 }
-
 function endGame(allPairsFound) {
   clearInterval(timer)
   lockBoard = true
@@ -371,7 +391,3 @@ function endGame(allPairsFound) {
   finalMessageText.textContent = message
   endGameMessage.classList.remove('hidden')
 }
-
-// --- 5. ASIGNACIÓN DE EVENTOS ---
-startButton.addEventListener('click', startGame)
-playAgainButton.addEventListener('click', startGame)
